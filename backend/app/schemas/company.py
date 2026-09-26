@@ -1,0 +1,14 @@
+from pydantic import BaseModel, Field
+
+
+class CompanyBase(BaseModel):
+    name: str = Field(..., min_length=2, max_length=150)
+    description: str | None = None
+
+
+class CompanyCreate(CompanyBase):
+    pass
+
+
+class CompanyResponse(CompanyBase):
+    id: int
